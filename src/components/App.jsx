@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TodoItem from "./TodoItem";
 
 function App() {
   let key = 0;
@@ -42,7 +43,7 @@ function App() {
         <ul>
           {list.map(item => {
             key++;
-            return <li key={key}>{item}</li>;
+            return <TodoItem key={key} item={item} />;
           })}
         </ul>
       </div>
