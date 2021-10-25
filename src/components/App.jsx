@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 
 function App() {
-  const key = Date.now();
-  const [list, addToList] = useState([<li key={key}>2 Item</li>]);
+  let key = 0;
+  const [list, addToList] = useState([]);
   const [item, setItem] = useState("");
 
   function handleClick(event) {
     if (item) {
-      addToList(prevVal => {
-        return [...prevVal, <li key={key}>{item}</li>];
-      });
+      addToList(prevVal => [...prevVal, item]);
       setItem("");
       event.preventDefault();
     }
@@ -41,7 +39,12 @@ function App() {
         </div>
       </form>
       <div>
-        <ul>{list}</ul>
+        <ul>
+          {list.map(item => {
+            key++;
+            return <li key={key}>{item}</li>;
+          })}
+        </ul>
       </div>
     </div>
   );
